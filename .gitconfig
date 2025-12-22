@@ -1,0 +1,7 @@
+# This is Git's per-user configuration file.
+[baalebos-cloud]
+# Please adapt and uncomment the following lines:
+#	name = Ubuntu
+#	email = ubuntu@ip-10-0-23-220.ec2.internal
+[pull]
+	rebase = true
