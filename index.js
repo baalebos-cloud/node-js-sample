@@ -1,17 +1,31 @@
 const express = require('express');
+const path = require('path');
+const { Pool } = require('pg');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
 const app = express();
 const port = process.env.PORT || 3000;
+const SECRET = process.env.JWT_SECRET || 'supersecret';
 
+// Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// View engine setup (optional if you're using EJS for dashboard)
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
+// PostgreSQL connection
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false }
+});
+
+// Root route
 app.get('/', (req, res) => {
   res.send('Hello from Render!');
 });
-
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const SECRET = process.env.JWT_SECRET || 'supersecret'; // Add this to your env vars later
 
 // Signup route
 app.post('/signup', async (req, res) => {
@@ -47,10 +61,8 @@ app.post('/login', async (req, res) => {
     res.status(500).send('Login failed');
   }
 });
-const path = require('path');
-app.set('view engine', 'ejs'); // or use Pug, Handlebars, etc.
-app.set('views', path.join(__dirname, 'views'));
 
+// Dashboard route (optional)
 app.get('/dashboard', async (req, res) => {
   try {
     const result = await pool.query('SELECT id, name, email, created_at FROM users ORDER BY id');
@@ -59,4 +71,9 @@ app.get('/dashboard', async (req, res) => {
     console.error(err);
     res.status(500).send('Error loading dashboard');
   }
+});
+
+// Start server
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
