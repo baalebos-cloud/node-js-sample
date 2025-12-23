@@ -5,3 +5,6 @@
 #	email = ubuntu@ip-10-0-23-220.ec2.internal
 [pull]
 	rebase = true
+[user]
+	name = Oluwadare
+	email = jayeolaoluwadamilare@gmail.com

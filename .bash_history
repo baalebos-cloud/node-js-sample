@@ -33,3 +33,10 @@ sudo apt install nodejs
 sudo apt install npm
 npm -v
 npm install pg
+npm install pg
+touch db.js
+nano db.js
+ls
+touch index.js
+nano index.js
+npm install express
