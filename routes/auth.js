@@ -10,6 +10,12 @@ const JWT_SECRET = process.env.JWT_SECRET || 'your_jwt_secret_key';
 router.post('/signup', async (req, res) => {
   const { name, email, password } = req.body;
   try {
+    // Check if email already exists
+    const existing = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
+    if (existing.rows.length > 0) {
+      return res.status(409).json({ error: 'Email already registered' });
+    }
+
     const hashedPassword = await bcrypt.hash(password, 10);
     await pool.query(
       `INSERT INTO users (name, email, password) VALUES ($1, $2, $3)`,
