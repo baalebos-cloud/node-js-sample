@@ -1,0 +1,64 @@
+0 verbose cli /usr/bin/node /usr/bin/npm
+1 info using npm@9.2.0
+2 info using node@v18.19.1
+3 timing npm:load:whichnode Completed in 1ms
+4 timing config:load:defaults Completed in 2ms
+5 timing config:load:file:/usr/share/nodejs/npm/npmrc Completed in 3ms
+6 timing config:load:builtin Completed in 4ms
+7 timing config:load:cli Completed in 3ms
+8 timing config:load:env Completed in 0ms
+9 timing config:load:project Completed in 2ms
+10 timing config:load:file:/home/ubuntu/.npmrc Completed in 0ms
+11 timing config:load:user Completed in 0ms
+12 timing config:load:file:/etc/npmrc Completed in 0ms
+13 timing config:load:global Completed in 0ms
+14 timing config:load:setEnvs Completed in 2ms
+15 timing config:load Completed in 14ms
+16 timing npm:load:configload Completed in 14ms
+17 timing npm:load:mkdirpcache Completed in 1ms
+18 timing npm:load:mkdirplogs Completed in 1ms
+19 verbose title npm install
+20 verbose argv "install"
+21 timing npm:load:setTitle Completed in 1ms
+22 timing config:load:flatten Completed in 5ms
+23 timing npm:load:display Completed in 7ms
+24 verbose logfile logs-max:10 dir:/home/ubuntu/.npm/_logs/2025-12-30T18_43_19_344Z-
+25 verbose logfile /home/ubuntu/.npm/_logs/2025-12-30T18_43_19_344Z-debug-0.log
+26 timing npm:load:logFile Completed in 10ms
+27 timing npm:load:timers Completed in 0ms
+28 timing npm:load:configScope Completed in 0ms
+29 timing npm:load Completed in 35ms
+30 silly logfile start cleaning logs, removing 1 files
+31 timing config:load:flatten Completed in 1ms
+32 timing arborist:ctor Completed in 1ms
+33 silly logfile done cleaning log files
+34 timing idealTree Completed in 4ms
+35 timing command:install Completed in 14ms
+36 verbose stack JSONParseError: Unexpected string in JSON at position 126 while parsing '{
+36 verbose stack   "name": "ubuntu",
+36 verbose stack   "version": "1.0.'
+36 verbose stack     at /usr/share/nodejs/npm/node_modules/read-package-json-fast/lib/index.js:11:61
+36 verbose stack     at async Arborist.buildIdealTree (/usr/share/nodejs/@npmcli/arborist/lib/arborist/build-ideal-tree.js:203:7)
+36 verbose stack     at async Promise.all (index 1)
+36 verbose stack     at async Arborist.reify (/usr/share/nodejs/@npmcli/arborist/lib/arborist/reify.js:156:5)
+36 verbose stack     at async Install.exec (/usr/share/nodejs/npm/lib/commands/install.js:146:5)
+36 verbose stack     at async module.exports (/usr/share/nodejs/npm/lib/cli.js:133:5)
+37 verbose cwd /home/ubuntu/views
+38 verbose Linux 6.14.0-1015-aws
+39 verbose node v18.19.1
+40 verbose npm  v9.2.0
+41 error code EJSONPARSE
+42 error path /home/ubuntu/package.json
+43 error JSON.parse Unexpected string in JSON at position 126 while parsing '{
+43 error JSON.parse   "name": "ubuntu",
+43 error JSON.parse   "version": "1.0.'
+44 error JSON.parse Failed to parse JSON data.
+44 error JSON.parse Note: package.json must be actual JSON, not just JavaScript.
+45 verbose exit 1
+46 timing npm Completed in 82ms
+47 verbose unfinished npm timer reify 1767120199405
+48 verbose unfinished npm timer reify:loadTrees 1767120199407
+49 verbose unfinished npm timer idealTree:init 1767120199410
+50 verbose code 1
+51 error A complete log of this run can be found in:
+51 error     /home/ubuntu/.npm/_logs/2025-12-30T18_43_19_344Z-debug-0.log

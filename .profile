@@ -25,3 +25,12 @@ fi
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
+
+# Java setup
+export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64   # adjust to your actual JDK path
+export PATH=${PATH}:${JAVA_HOME}/bin
+
+# Maven setup
+export M2_HOME=/opt/apache-maven-3.9.12
+export MAVEN_HOME=/opt/apache-maven-3.9.12
+export PATH=$MAVEN_HOME/bin:$PATH
