@@ -16,11 +16,11 @@ router.post('/signup', async (req, res) => {
       return res.status(409).json({ error: 'Email already registered' });
     }
 
-    const hashedPassword = await bcrypt.hash(password, 10);
-    await pool.query(
-      `INSERT INTO users (name, email, password) VALUES ($1, $2, $3)`,
-      [name, email, hashedPassword]
-    );
+    const role = req.body.role || 'user';
+await pool.query(
+  `INSERT INTO users (name, email, password, role) VALUES ($1, $2, $3, $4)`,
+  [name, email, hashedPassword, role]
+);
     res.status(201).json({ message: 'User registered successfully' });
   } catch (err) {
     console.error('Signup error:', err);
