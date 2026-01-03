@@ -5,7 +5,7 @@ const app = express();
 app.use(express.json());
 
 // ✅ Add your routes here
-const authRoutes = require('../routes/auth');
+const authRoutes = require('./routes/auth');
 app.use('/api/auth', authRoutes);
 
 // A simple test route
