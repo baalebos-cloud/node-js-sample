@@ -48,18 +48,26 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// Middleware to verify JWT
+ // Middleware to verify JWT
+const jwt = require('jsonwebtoken');
+const JWT_SECRET = process.env.JWT_SECRET || 'your_jwt_secret_key';
+
 const authenticate = (req, res, next) => {
   const authHeader = req.headers.authorization;
-  if (!authHeader) return res.status(401).json({ error: 'Missing token' });
+
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    return res.status(401).json({ error: 'Missing or malformed token' });
+  }
 
   const token = authHeader.split(' ')[1];
+
   try {
     const payload = jwt.verify(token, JWT_SECRET);
-    req.user = payload;
+    req.user = payload; // payload should contain userId and role
     next();
   } catch (err) {
-    res.status(403).json({ error: 'Invalid token' });
+    console.error('JWT verification failed:', err);
+    res.status(403).json({ error: 'Invalid or expired token' });
   }
 };
 

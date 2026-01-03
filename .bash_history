@@ -608,3 +608,24 @@ node views/server.js
 cd ~/views
 node server.js
 curl -X POST http://localhost:3000/api/auth/signup   -H "Content-Type: application/json"   -d '{"name":"Jayeola","email":"jay@example.com","password":"test123"}'
+ll
+ls
+touch render.yaml
+nano render.yaml
+git add render.yaml
+git commit -m "Add render.yaml for Render deployment"
+git push origin master
+export DATABASE_URL="postgresql://postgresql_baalebos_db_user:81fNTSRMe9WfuUgNoeLu1Vyn8jhRMgK3@dpg-d54r9cm3jplc739f8dbg-a.virginia-postgres.render.com/postgresql_baalebos_db?sslmode=require
+cd views
+node server.js
+cd
+nano package.json
+git add package.json
+git commit -m "Fix: add missing start script"
+git push origin master
+mv views/server.js .
+nano package.json
+git add .
+git commit -m "Move server.js to root and fix start script"
+git push origin master
+git status
